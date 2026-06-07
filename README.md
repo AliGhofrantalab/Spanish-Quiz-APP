@@ -8,7 +8,7 @@ This project was built as a beginner-friendly exercise to strengthen my skills i
 
 ## 🚀 Live Demo
 
-## https://alighofrantalab.github.io/Spanish-Quiz-App/
+## https://alighofrantalab.github.io/Spanish-Quiz-APP/
 
 ## ✨ Features
 
