@@ -20,6 +20,7 @@ const optionsElement = document.querySelectorAll(".option");
 const resultElement = document.getElementById("results");
 const nextButton = document.getElementById("nextBtn");
 let currentQuestion = 0;
+let score = 0;
 
 function loadQuestion() {
   const q = quizData[currentQuestion];
@@ -28,6 +29,7 @@ function loadQuestion() {
     btn.classList.remove("correct", "wrong");
     btn.disabled = false;
     btn.style.background = "";
+    document.getElementById("score").textContent = `Score: ${score}`;
   });
   optionsElement.forEach((btn, index) => {
     btn.textContent = q.options[index];
@@ -44,6 +46,7 @@ optionsElement.forEach((btn) => {
     if (selectedOption === correctOption) {
       resultElement.textContent = "✅CORRECT!";
       btn.classList.add("correct");
+      score++;
     } else {
       resultElement.textContent = "❌WRONG!";
       btn.classList.add("wrong");
@@ -58,9 +61,17 @@ optionsElement.forEach((btn) => {
 nextButton.addEventListener("click", () => {
   currentQuestion++;
   if (currentQuestion >= quizData.length) {
-    alert("Quiz Finished !");
+    alert("Quiz Finished! Your Score: " + score + " / " + quizData.length);
+score = 0;
+currentQuestion = 0;
+loadQuestion();
     currentQuestion = 0;
   }
   loadQuestion();
+});
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
 });
 loadQuestion();
