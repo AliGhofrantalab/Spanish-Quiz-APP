@@ -21,6 +21,9 @@ const resultElement = document.getElementById("results");
 const nextButton = document.getElementById("nextBtn");
 let currentQuestion = 0;
 let score = 0;
+const finalScreen = document.getElementById("finalScreen");
+const finalScore = document.getElementById("finalScore");
+const restartBtn = document.getElementById("restartBtn");
 
 function loadQuestion() {
   const q = quizData[currentQuestion];
@@ -47,6 +50,7 @@ optionsElement.forEach((btn) => {
       resultElement.textContent = "✅CORRECT!";
       btn.classList.add("correct");
       score++;
+      document.getElementById("score").textContent = `Score: ${score}`;
     } else {
       resultElement.textContent = "❌WRONG!";
       btn.classList.add("wrong");
@@ -61,12 +65,35 @@ optionsElement.forEach((btn) => {
 nextButton.addEventListener("click", () => {
   currentQuestion++;
   if (currentQuestion >= quizData.length) {
-    alert("Quiz Finished! Your Score: " + score + " / " + quizData.length);
-score = 0;
-currentQuestion = 0;
-loadQuestion();
-    currentQuestion = 0;
+    finalScreen.style.display = "block";
+    questionElement.style.display = "none";
+    document.getElementById("options").style.display = "none";
+    nextButton.style.display = "none";
+    finalScore.textContent = `Your Score: ${score} / ${quizData.length}`;
+    resultElement.style.display = "none";
+    document.getElementById("score").style.display = "none";
+    return;
   }
+  loadQuestion();
+});
+restartBtn.addEventListener("click", () => {
+  score = 0;
+  currentQuestion = 0;
+  ((finalScreen.style.display = "none"),
+    (questionElement.style.display = "block"));
+  document.getElementById("options").style.display = "block";
+  nextButton.style.display = "block";
+  resultElement.textContent = "";
+  optionsElement.forEach((btn) => {
+    btn.classList.remove("correct", "wrong");
+    btn.style.backgroundColor = "";
+    btn.disabled = false;
+    resultElement.style.display = "block";
+    document.getElementById("score").style.display = "block";
+    document.getElementById("score").textContent = "Score: 0";
+  });
+
+  document.getElementById("score").textContent = "Score: 0";
   loadQuestion();
 });
 const themeToggle = document.getElementById("themeToggle");

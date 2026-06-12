@@ -14,7 +14,6 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-top: 50px;
 }
 
 .option {
@@ -40,17 +39,19 @@ body {
 }
 
 .correct {
-  background: #2ecc71 !important;
+  background: #21eb28 !important;
   color: white;
+  border: 1px solid #4cf054;
 }
 
 .wrong {
-  background: #e74c3c !important;
+  background: #ff1100 !important;
   color: white;
+  border: 1px solid #ff0400;
 }
 
 #nextBtn {
-  margin-top: 15px;
+  margin-top: 10px;
 
   padding: 10px 20px;
 
@@ -120,12 +121,12 @@ body.dark-mode #result {
   color: #ffffff;
 }
 body.dark-mode #nextBtn {
-  background-color: #3498db;
+  background-color: #9b5de5;
   color: white;
 }
 
 body.dark-mode #nextBtn:hover {
-  background-color: #3498db;
+  background-color: #9b5de5;
 }
 
 body.dark-mode .container {
@@ -142,4 +143,44 @@ body.dark-mode .theme-toggle label {
   background-color: #2a2a2a;
   color: #ffffff;
 }
+#finalScreen {
+  text-align: center;
+  margin-top: 20px;
+}
+#restartBtn {
+  padding: 12px 25px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #2ecc71;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+#restartBtn:hover {
+  background: #27ae60;
+  transform: scale(1.05);
+}
+body.dark-mode #restartBtn {
+  background: #bb86fc;
+  color: #121212;
+}
 
+body.dark-mode #restartBtn:hover {
+  background: #9b5de5;
+}
+html,
+body {
+  overflow: hidden;
+}
+#results {
+  min-height: 30px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+#score {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
