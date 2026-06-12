@@ -79,11 +79,13 @@ Spanish-Quiz-App/
 
 ## 🧭 Version History
 
-**v1.0** → Initial release (basic multiple-choice quiz application)
+## 🧭 Version History
 
-**v1.1** → Planned UI improvements and bug fixes
+v1.0 → Initial release (basic quiz system with multiple-choice questions)
 
-**v2.0** → Planned score system, timer, and progress tracking
+v1.1 → Added score tracking and Dark mode + UI improvements
+
+v1.2 → Final score screen + Restart button + Better UX flow
 
 ---
 
