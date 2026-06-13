@@ -9,6 +9,7 @@
 
   <body>
     <div class="container">
+      <div id="timer">⏱ 10</div>
       <div class="theme-toggle">
         <label>
           <input type="checkbox" id="themeToggle" />
@@ -16,6 +17,12 @@
         </label>
       </div>
       <h1>Spanish Quiz</h1>
+      <div class="progressWrapper">
+        <div id="progressText"></div>
+        <div id="progressBar">
+          <div id="progressFill"></div>
+        </div>
+      </div>
       <h2 id="question">Question</h2>
       <div id="options">
         <button class="option">option1</button>
@@ -28,10 +35,10 @@
         <p id="finalScore"></p>
         <button id="restartBtn">Try Again</button>
       </div>
+      <p id="results"></p>
+      <p id="score">Score: 0</p>
+      <button id="nextBtn">Next</button>
     </div>
-    <p id="results"></p>
-    <p id="score">Score: 0</p>
-    <button id="nextBtn">Next</button>
     <script src="script.js"></script>
   </body>
 </html>

@@ -24,6 +24,10 @@ let score = 0;
 const finalScreen = document.getElementById("finalScreen");
 const finalScore = document.getElementById("finalScore");
 const restartBtn = document.getElementById("restartBtn");
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
+let timeLeft = 10;
+let timerInterval;
 
 function loadQuestion() {
   const q = quizData[currentQuestion];
@@ -40,6 +44,10 @@ function loadQuestion() {
     btn.style.backgroundColor = "";
   });
   resultElement.textContent = "";
+  progressText.textContent = `Question ${currentQuestion + 1} / ${quizData.length}`;
+
+  progressFill.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+  startTimer();
 }
 
 optionsElement.forEach((btn) => {
@@ -63,18 +71,18 @@ optionsElement.forEach((btn) => {
   });
 });
 nextButton.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion >= quizData.length) {
-    finalScreen.style.display = "block";
-    questionElement.style.display = "none";
-    document.getElementById("options").style.display = "none";
-    nextButton.style.display = "none";
-    finalScore.textContent = `Your Score: ${score} / ${quizData.length}`;
-    resultElement.style.display = "none";
-    document.getElementById("score").style.display = "none";
-    return;
-  }
-  loadQuestion();
+  clearInterval(timerInterval);
+  // if (currentQuestion >= quizData.length) {
+  //finalScreen.style.display = "block";
+  //questionElement.style.display = "none";
+  //document.getElementById("options").style.display = "none";
+  //nextButton.style.display = "none";
+  //finalScore.textContent = `Your Score: ${score} / ${quizData.length}`;
+  //resultElement.style.display = "none";
+  //document.getElementById("score").style.display = "none";
+  //return;
+  //}
+  goNextQuestion();
 });
 restartBtn.addEventListener("click", () => {
   score = 0;
@@ -101,4 +109,37 @@ const themeToggle = document.getElementById("themeToggle");
 themeToggle.addEventListener("change", () => {
   document.body.classList.toggle("dark-mode");
 });
+
+function goNextQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= quizData.length) {
+    showFinalScreen();
+    return;
+  }
+  loadQuestion();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timeLeft = 10;
+  document.getElementById("timer").textContent = `⏱ ${timeLeft}`;
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").textContent = `⏱ ${timeLeft}`;
+    if (timeLeft === 0) {
+      clearInterval(timerInterval);
+      goNextQuestion();
+    }
+  }, 1000);
+}
+function showFinalScreen() {
+  finalScreen.style.display = "block";
+  questionElement.style.display = "none";
+  document.getElementById("options").style.display = "none";
+  nextButton.style.display = "none";
+  document.getElementById("score").style.display = "none";
+  resultElement.style.display = "none";
+  finalScore.textContent = `Your Score: ${score} / ${quizData.length}`;
+}
+
 loadQuestion();

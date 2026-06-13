@@ -5,6 +5,10 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  justify-content: center;
 }
 
 .container {
@@ -14,6 +18,8 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position: relative;
+  max-height: 90vh;
 }
 
 .option {
@@ -29,6 +35,7 @@ body {
   border: 1px solid #e0e0e0;
   width: 50%;
   margin: 10px auto;
+  font-weight: 200;
 }
 
 .option:hover {
@@ -36,6 +43,7 @@ body {
   background: #f1f7ff;
   transform: translateY(-2px);
   transition: all 0.2s ease;
+  font-weight: 200;
 }
 
 .correct {
@@ -51,27 +59,21 @@ body {
 }
 
 #nextBtn {
-  margin-top: 10px;
-
+  position: relative;
   padding: 10px 20px;
-
   border: none;
-
   border-radius: 10px;
-
-  background: #3498db;
-
+  background: #ff0000;
   color: white;
-
   font-size: 16px;
-
   cursor: pointer;
-
   transition: 0.2s;
+  display: block;
+  margin: 15px auto 0 auto;
 }
 
 #nextBtn:hover {
-  background: #2980b9;
+  background: #fc1e1e;
   transform: scale(1.05);
 }
 body.dark-mode {
@@ -152,7 +154,7 @@ body.dark-mode .theme-toggle label {
   margin-top: 15px;
   border: none;
   border-radius: 10px;
-  background: #2ecc71;
+  background: #ff0000;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -160,7 +162,7 @@ body.dark-mode .theme-toggle label {
   font-weight: 500;
 }
 #restartBtn:hover {
-  background: #27ae60;
+  background: #fc1e1e;
   transform: scale(1.05);
 }
 body.dark-mode #restartBtn {
@@ -171,10 +173,7 @@ body.dark-mode #restartBtn {
 body.dark-mode #restartBtn:hover {
   background: #9b5de5;
 }
-html,
-body {
-  overflow: hidden;
-}
+
 #results {
   min-height: 30px;
   margin: 10px 0;
@@ -183,4 +182,52 @@ body {
 #score {
   margin-bottom: 5px;
   font-size: 16px;
+}
+.progressWrapper {
+  margin-bottom: 15px;
+}
+#progressText {
+  font-size: 13px;
+  margin-bottom: 6px;
+  text-align: left;
+  font-weight: 700;
+  color: #333;
+}
+#progressBar {
+  width: 70%;
+  height: 6px;
+  background: #eeeeee;
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff0000, #f8abb6);
+  border-radius: 50px;
+  transition: width 0.4s ease;
+}
+body.dark-mode #progressText {
+  color: white !important;
+  font-weight: 700;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#timer {
+  font-size: 35px;
+  font-weight: 800;
+  border-radius: 12px;
+  color: #ff0000;
+  font-weight: 900;
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+body.dark-mode #timer {
+  color: #ff0000;
+}
+.theme-toggle input {
+  accent-color: #ff3b3b;
 }
